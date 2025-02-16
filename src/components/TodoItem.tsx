@@ -5,6 +5,7 @@ type TodoItemProps = {
   title: string;
   completed: boolean;
   toggleTodo: (id: string, completed: boolean) => void;
+  deleteTodo: (id: string) => void;
 };
 
 export default function TodoItem({
@@ -12,6 +13,7 @@ export default function TodoItem({
   title,
   completed,
   toggleTodo,
+  deleteTodo,
 }: TodoItemProps) {
   return (
     <li key={id} className="flex gap-4 border p-2 justify-between">
@@ -30,7 +32,7 @@ export default function TodoItem({
           {title}
         </label>
       </div>
-      <button className="text-gray-400 px-1 border border-gray-400 rounded-md hover:bg-gray-400 hover:text-gray-900">
+      <button className="text-gray-400 px-1 border border-gray-400 rounded-md hover:bg-gray-400 hover:text-gray-900" onClick={() => deleteTodo(id)}>
         X
       </button>
     </li>
