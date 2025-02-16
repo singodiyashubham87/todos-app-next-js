@@ -27,12 +27,17 @@ export default function TodoItem({
         />
         <label
           htmlFor={id}
-          className={`flex items-center gap-2 text-gray-400 peer-checked:line-through text-xl`}
+          className={`flex items-center gap-2 text-gray-400 ${
+            completed ? "line-through" : ""
+          } text-xl`}
         >
           {title}
         </label>
       </div>
-      <button className="text-gray-400 px-1 border border-gray-400 rounded-md hover:bg-gray-400 hover:text-gray-900" onClick={() => deleteTodo(id)}>
+      <button
+        className="text-gray-400 px-1 border border-gray-400 rounded-md hover:bg-gray-400 hover:text-gray-900"
+        onClick={() => deleteTodo(id)}
+      >
         X
       </button>
     </li>

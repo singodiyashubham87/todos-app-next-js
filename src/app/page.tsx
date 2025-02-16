@@ -2,6 +2,7 @@ import TodoItem from "@/components/TodoItem";
 import { prisma } from "@/db";
 import Image from "next/image";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 async function toggleTodo(id: string, completed: boolean) {
   "use server";
@@ -9,11 +10,13 @@ async function toggleTodo(id: string, completed: boolean) {
     where: { id },
     data: { completed },
   });
+  redirect('/')
 }
 
 async function deleteTodo(id: string) {
   "use server";
   await prisma.todo.delete({ where: { id } });
+  redirect('/');
 }
 export default async function Home() {
 
