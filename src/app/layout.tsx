@@ -2,10 +2,9 @@ import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-export const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
+const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-})
+});
 
 export const metadata: Metadata = {
   title: "Todo App",
@@ -19,9 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${jetbrainsMono.className} antialiased`}
-      >
+      <body className={`${jetbrainsMono.className} antialiased`}>
         {children}
       </body>
     </html>
