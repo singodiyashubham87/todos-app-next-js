@@ -1,9 +1,19 @@
+import TodoItem from "@/components/TodoItem";
 import { prisma } from "@/db";
 import Image from "next/image";
 import Link from "next/link";
 
+async function toggleTodo(id: string, completed: boolean) {
+  "use server";
+  await prisma.todo.update({
+    where: { id },
+    data: { completed },
+  });
+}
 export default async function Home() {
+
   const todos = await prisma.todo.findMany();
+
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <header className="flex w-2/3 justify-between">
@@ -17,9 +27,7 @@ export default async function Home() {
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <ol>
           {todos.map((todo) => (
-            <li key={todo.id}>
-                <a>{`=>`} {todo.title}</a>
-            </li>
+            <TodoItem key={todo.id} {...todo} toggleTodo={toggleTodo} />
           ))}
         </ol>
       </main>
