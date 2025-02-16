@@ -1,10 +1,13 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function NewTodo() {
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <header className="flex w-2/3 justify-between">
-        <h1 className="text-3xl font-semibold">New Todo</h1>
+        <Link href="/">
+          <h1 className="text-3xl font-semibold">Todo App</h1>
+        </Link>
       </header>
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <form className="flex flex-col gap-4 w-full">
